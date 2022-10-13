@@ -7,4 +7,5 @@ from entrega_final.settings import *
 urlpatterns = [
 
     path('', inicio, name="inicio"),
+    path('about_us/', nosotros, name="nosotros"),
 ]

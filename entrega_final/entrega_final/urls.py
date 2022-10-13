@@ -20,5 +20,5 @@ from entrega_final.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', test_inicio),
-    path("App_CB/", include("App_CB.urls"))
+    path("", include("App_CB.urls"))
 ]

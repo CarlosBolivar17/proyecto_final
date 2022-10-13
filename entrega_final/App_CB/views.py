@@ -19,3 +19,11 @@ def inicio(self):
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
 
+def nosotros(self):
+    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/about_us.html")
+    plantilla = Template(miHtml.read())
+    miHtml.close()
+    miContexto = Context()
+    documento = plantilla.render(miContexto)
+    return HttpResponse(documento)
+
