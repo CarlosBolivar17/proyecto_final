@@ -1,0 +1,36 @@
+{% extends "App_CB/plantilla_base_1.html"%}
+
+{% block titulo %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
+
+                    </div>
+                </div>
+            </div>
+        
+                    <form action="/App_CB/reserva/" method="POST"> {% csrf_token %}
+
+                        <p>Ingrese los datos para reservar </p>
+
+                        <p> Nombre del titular: <input type="text" name="nombre_asociado"/> </p>
+
+                        
+
+                        <p> Cantidad de personas: <input type="number" name="cantidad_pax"/>  </p>
+
+                        <p> Fecha de reserva <input type="date" name="Fecha_ingreso"/>  </p>
+
+                        <input type="submit" value="enviar informacion" />
+
+
+
+                    </form>   
+        </header>            
+{% endblock %}
+
+
+
