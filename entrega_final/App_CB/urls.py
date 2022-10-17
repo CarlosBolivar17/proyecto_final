@@ -11,4 +11,5 @@ urlpatterns = [
     path('log_in/', log_in, name="registro"),
     path('reg_user/', reg_user, name="reg_user"),
     path('reserva/', reserva, name="reserva"),
+    path('about/', about, name="about"),
 ]

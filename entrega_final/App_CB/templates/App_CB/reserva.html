@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-        
+            <div class="mibackground">
                     <form action="/App_CB/reserva/" method="POST"> {% csrf_token %}
 
                         <p>Ingrese los datos para reservar </p>
@@ -24,11 +24,12 @@
 
                         <p> Fecha de reserva <input type="date" name="Fecha_ingreso"/>  </p>
 
-                        <input type="submit" value="enviar informacion" />
+                        <p> <input type="submit" value="enviar informacion" /> </p>
 
 
 
                     </form>   
+                </div>
         </header>            
 {% endblock %}
 

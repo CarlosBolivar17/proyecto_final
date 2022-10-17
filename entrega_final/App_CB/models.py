@@ -14,6 +14,6 @@ class administrador(models.Model):
 
 
 class reserva(models.Model):
-    Importe_asociado = models.CharField(max_length=60)
-    Importe_gastado = models.IntegerField()
-    Fecha_importe = models.DateField()
+    nombre_asociado = models.CharField(max_length=60)
+    cantidad_pax = models.IntegerField()
+    Fecha_ingreso = models.DateField()
