@@ -7,5 +7,8 @@ from entrega_final.settings import *
 urlpatterns = [
 
     path('', inicio, name="inicio"),
-    path('about_us/', nosotros, name="nosotros"),
+    path('carta/', carta, name="carta"),
+    path('log_in/', log_in, name="registro"),
+    path('reg_user/', reg_user, name="reg_user"),
+    path('reserva/', reserva, name="reserva"),
 ]
