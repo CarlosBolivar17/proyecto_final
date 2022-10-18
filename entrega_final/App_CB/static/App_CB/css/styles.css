@@ -11699,7 +11699,8 @@ body {
   padding: 5rem 0;
 }
 
-.mibackground {
+
+.mibackground,.reg_user {
 	background-color: black;
 	color: white;
 }

@@ -8,7 +8,7 @@ from App_CB.models import *
 from App_CB.templates import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 
@@ -24,7 +24,7 @@ def inicio(self):
 
 def log_in(self):
 
-    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/log_in.html")
+    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/registration/log_in.html")
     plantilla = Template(miHtml.read())
     miHtml.close()
     miContexto = Context()
@@ -62,21 +62,30 @@ def about(self):
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
 
+def inicio_sesion(request):
 
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
 
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
 
-def login_request(request):
-
-
-      if request.method == "POST":
-            form = AuthenticationForm(request, data = request.POST)
-
-            if form.is_valid():
-                  usuario = form.cleaned_data.get('username')
-                  contra = form.cleaned_data.get('password')
-
-                  user = authenticate(username=usuario, password=contra)
+            user = authenticate(username=usuario, password=contra)
 
             
-                  if user is not None:
-                        login(request, user)
+            if user:
+                login(request,user)
+                return render(request, "App_CB/inicio.html", {"mensaje":f"bienvenido {user}"})
+            
+        else:
+
+            return render(request, "App_CB/inicio.html", {"mensaje":"Datos incorrectos."})
+        
+    else:
+    
+        form = AuthenticationForm()
+    
+    return render(request, "App_CB/log_in.html", {"formulario":form})
+
+
