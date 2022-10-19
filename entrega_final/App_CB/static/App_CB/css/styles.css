@@ -40,7 +40,7 @@
   --bs-warning: #e4c662;
   --bs-danger: #a16468;
   --bs-light: #f8f9fa;
-  --bs-dark: #212529;
+  --bs-dark: #f0f7ff;
   --bs-black: #000;
   --bs-white: #fff;
   --bs-primary-rgb: 100, 161, 157;
@@ -64,7 +64,7 @@
   --bs-body-font-size: 2rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
+  --bs-body-color: #000000;
   --bs-body-bg: #fff;
 }
 
@@ -11701,10 +11701,13 @@ body {
 
 
 .mibackground,.reg_user {
-	background-color: black;
+	background-color: gray;
 	color: white;
 }
 
-.mibackground p {
+.mibackground, .boton-centro {
 	text-align: center;
+}
+.boton-centro button { 
+  display: inline;
 }

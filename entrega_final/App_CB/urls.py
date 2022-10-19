@@ -9,7 +9,7 @@ urlpatterns = [
     path('', inicio, name="inicio"),
     path('carta/', carta, name="carta"),
     path('iniciarsesion/', inicio_sesion, name="Login"),
-    path('reg_user/', reg_user, name="reg_user"),
+    path('register/', register, name="register"),
     path('reserva/', reserva, name="reserva"),
     path('about/', about, name="about"),
 ]

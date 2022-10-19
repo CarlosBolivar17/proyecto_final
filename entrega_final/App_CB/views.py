@@ -7,7 +7,7 @@ from App_CB.views import *
 from App_CB.models import *
 from App_CB.templates import *
 from .forms import *
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
@@ -89,3 +89,19 @@ def inicio_sesion(request):
     return render(request, "App_CB/log_in.html", {"formulario":form})
 
 
+def register(request):
+
+      if request.method == "POST":
+
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+
+                  username = form.cleaned_data['username']
+                  form.save()
+                  return render(request,"App_CB/inicio.html" ,  {"mensaje":"Usuario Creado :)"})
+
+
+      else:    
+            form = UserCreationForm()     
+
+      return render(request,"App_CB/register.html" ,  {"form":form})
