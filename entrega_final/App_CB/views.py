@@ -104,4 +104,4 @@ def register(request):
       else:    
             form = UserCreationForm()     
 
-      return render(request,"App_CB/register.html" ,  {"form":form})
+      return render(request,"App_CB/register.html" ,  {"formulario":form})
