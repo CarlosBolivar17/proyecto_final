@@ -1,0 +1,28 @@
+{% extends "App_CB/plantilla_base_1.html"%}
+
+{% load static %}
+
+{% block titulo %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        
+                        
+                        <form class="mibackground" action="" method="POST"> {% csrf_token %}
+
+                        <table>    
+                        {{formulario.as_p}}
+                        
+
+
+                        </table>
+                        <button type="submit"> Crear usuario </button>                        
+    </body>
+</html>
+
+
+
+
+{% endblock %}

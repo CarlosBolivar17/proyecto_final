@@ -1,4 +1,4 @@
-{% extends "App_CB/plantilla_base_1.html"%}
+{% extends "App_CB/plantilla_base_1.html" %}
 
 {% block titulo %}
         <!-- Masthead-->
@@ -12,22 +12,17 @@
                 </div>
             </div>
             <div class="mibackground">
-                    <form action="" method="POST"> {% csrf_token %}
-                        
-                        <p>Ingrese los datos para reservar </p>
+                <form action="/reserva/" method="POST"> 
 
-                        <p> Nombre del titular: <input type="text" name="nombre_asociado"/> </p>
+                    <p>Ingrese datos de reserva </p>
+                
+                    <p> Nombre del cliente: <input type="text" name="Importe_nom" /> </p>
 
-                        
-
-                        <p> Cantidad de personas: <input type="number" name="cantidad_pax"/>  </p>
-
-                        <p> Fecha de reserva <input type="date" name="Fecha_ingreso"/>  </p>
-
-                        <p> <input type="submit" value="enviar informacion" /> </p>
-
-
-
+                    <p> Cantidad de personas: <input type="number" name="Importe_num" />  </p>
+                
+                    <p> Fecha de reserva <input type="date" name="Fecha_importe" />  </p>
+                
+                    <input type="submit" value="enviar informacion" />
                     </form>   
                 </div>
         </header>            

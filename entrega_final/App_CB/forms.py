@@ -13,3 +13,10 @@ class create_user(UserCreationForm):
         fields = ["username", "email", "first_name", "last_name","password1", "password2"]
 
 
+class user_editform(UserCreationForm):
+    email = forms.EmailField()
+    password1:forms.CharField (label="Contraseña", widget=forms.PasswordInput)
+    password2:forms.CharField (label="Repita contraseña", widget=forms.PasswordInput)
+    class Meta:
+        model = User
+        fields = ["username", "email", "first_name", "last_name","password1", "password2"]

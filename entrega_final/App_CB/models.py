@@ -17,9 +17,9 @@ class administrador(models.Model):
     Fecha_nacimiento = models.DateField()
 
 
-class reserva_1(models.Model):
-    nombre_asociado = models.CharField(max_length=60)
-    cantidad_pax = models.IntegerField()
-    Fecha_ingreso = models.DateField()
+class varios(models.Model):
+    Importe_nom = models.CharField(max_length=60)
+    Importe_num = models.IntegerField()
+    Fecha_importe = models.DateField()
 
 

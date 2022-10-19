@@ -13,7 +13,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -24,7 +24,37 @@ def inicio(self):
     miContexto = Context()
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
-def reserva(self):
+
+@login_required
+def edit_perfil(request):
+    usuario= request.user
+    if request.method == 'POST':
+        if formulario.is_valid:
+
+            informacion = formulario.cleaned_data
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2'] 
+            usuario.save()
+
+            return render(request, "App_CB/inicio.html")
+
+    else:
+        formulario = user_editform(Initial={'email':usuario.mail})
+    return render(request, "App_CB/profile.html", {"formulario": formulario, "usuario":usuario})
+
+
+
+@csrf_exempt
+def reserva(request):
+    if request.method=="POST":
+        
+        varios_ = varios(Importe_nom=request.POST["Importe_nom"],Importe_num=request.POST["Importe_num"],Fecha_importe=request.POST["Fecha_importe"])
+
+        varios_.save()
+
+        return render(request, "App_CB/inicio.html")
+
     miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/reserva.html")
     plantilla = Template(miHtml.read())
     miHtml.close()
@@ -56,17 +86,6 @@ def reg_user(self):
     miContexto = Context()
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
-
-def reserva__(self):
-        if request.method=="POST":
-        
-            reserva_= reserva_1(nombre_asociado=request.POST["nombre_asociado"],cantidad_pax=request.POST["cantidad_pax"],Fecha_importe=request.POST["Fecha_importe"])
-
-            reserva_.save()
-
-            return render(request, "App_CB/reserva.html")
-
-        return render(request, "App_CB/reserva.html")
 
 
 
