@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -13,7 +17,9 @@ class administrador(models.Model):
     Fecha_nacimiento = models.DateField()
 
 
-class reserva(models.Model):
+class reserva_1(models.Model):
     nombre_asociado = models.CharField(max_length=60)
     cantidad_pax = models.IntegerField()
     Fecha_ingreso = models.DateField()
+
+

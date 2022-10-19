@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from contextvars import Context
-from django.http import HttpResponse, request
+from django.http import HttpResponse, request, response
 from datetime import datetime
 from django.template import Template, Context
 from App_CB.views import *
+from App_CB.forms import *
 from App_CB.models import *
 from App_CB.templates import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
 
 # Create your views here.
-
 
 
 def inicio(self):
@@ -21,6 +24,13 @@ def inicio(self):
     miContexto = Context()
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
+def reserva(self):
+    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/reserva.html")
+    plantilla = Template(miHtml.read())
+    miHtml.close()
+    miContexto = Context()
+    documento = plantilla.render(miContexto)
+    return HttpResponse(documento) 
 
 def log_in(self):
 
@@ -47,13 +57,19 @@ def reg_user(self):
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
 
-def reserva(self):
-    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/reserva.html")
-    plantilla = Template(miHtml.read())
-    miHtml.close()
-    miContexto = Context()
-    documento = plantilla.render(miContexto)
-    return HttpResponse(documento)
+def reserva__(self):
+        if request.method=="POST":
+        
+            reserva_= reserva_1(nombre_asociado=request.POST["nombre_asociado"],cantidad_pax=request.POST["cantidad_pax"],Fecha_importe=request.POST["Fecha_importe"])
+
+            reserva_.save()
+
+            return render(request, "App_CB/reserva.html")
+
+        return render(request, "App_CB/reserva.html")
+
+
+
 def about(self):
     miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/About.html")
     plantilla = Template(miHtml.read())
@@ -93,7 +109,7 @@ def register(request):
 
       if request.method == "POST":
 
-            form = UserCreationForm(request.POST)
+            form = create_user(request.POST)
             if form.is_valid():
 
                   username = form.cleaned_data['username']
@@ -102,6 +118,6 @@ def register(request):
 
 
       else:    
-            form = UserCreationForm()     
+            form = create_user()     
 
       return render(request,"App_CB/register.html" ,  {"formulario":form})
