@@ -1,0 +1,49 @@
+{% extends "App_CB/plantilla_base_1.html"%}
+
+{% load static %}
+
+{% block titulo %}
+            <!-- Masthead-->
+
+            <div class="background-image"><img class="img-fluid" src="{% static 'App_CB/assets/img/A.jpg'%}" alt="..." />
+
+        <form action="/buscador_reserva/" method="GET"> {% csrf_token %}
+
+            <p>seleccione fecha de reservas </p>
+
+
+            <input type="date" name="Fecha_importe" id="Fecha_importe" value='{{valorFechaImporte}}'/>
+            <input type="submit" value="buscador_reservas"/>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre del cliente</th>
+                        <th>Cantidad de personas</th>
+                        <th>Fecha de reserva</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in modelo %}
+                    <tr>
+                        <td>{{r.id}}</td>
+                        <td>{{r.Importe_nom}}</td>
+                        <td>{{r.Importe_num}}</td>
+                        <td>{{r.Fecha_importe}}</td>
+                        <td>
+                            <div><a href="{% url 'confirmar_reserva_eliminacion' %}">Eliminar</a></div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            
+        </form>
+    </div>
+</header>
+
+
+{% endblock %}
