@@ -25,6 +25,15 @@ def inicio(self):
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
 
+def reservas(self):
+
+    miHtml = open("C:/Users/carlo/OneDrive/Desktop/Django/entrega_final/entrega_final/App_CB/templates/App_CB/reservas.html")
+    plantilla = Template(miHtml.read())
+    miHtml.close()
+    miContexto = Context()
+    documento = plantilla.render(miContexto)
+    return HttpResponse(documento)
+
 @login_required
 def edit_perfil(request):
     usuario= request.user
@@ -140,3 +149,10 @@ def register(request):
             form = create_user()     
 
       return render(request,"App_CB/register.html" ,  {"formulario":form})
+
+def buscador_reservas(request):
+
+    if request.GET["Fecha_importe"] != "":
+        modeloResultados = varios.objects.filter(Fecha_importe=request.GET["Fecha_importe"])
+
+    return render(request,'App_CB/buscador_reservas.html', {"modelo":modeloResultados, "valorFechaImporte":request.GET["Fecha_importe"]})

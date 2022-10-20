@@ -11,11 +11,14 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
 
-    path('inicio', inicio, name="inicio"),
+    path('inicio/', inicio, name="inicio"),
+    path('reservas/', reservas, name="reservas"),
     path('carta/', carta, name="carta"),
     path('', inicio_sesion, name="Login"),
     path('register/', register, name="register"),
+    path('edit_perfil/', edit_perfil, name="edit_perfil"),
     path('reserva/', reserva, name="reserva"),
+    path('buscador_reserva/', buscador_reservas,),
     path('about/', about, name="about"),
     path('logout', LogoutView.as_view(template_name="App_CB/logout.html"), name="logout"),
 ]

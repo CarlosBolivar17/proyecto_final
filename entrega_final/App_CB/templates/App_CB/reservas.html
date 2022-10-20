@@ -1,0 +1,24 @@
+{% extends "App_CB/plantilla_base_1.html"%}
+
+{% load static %}
+
+{% block titulo %}
+            <!-- Masthead-->
+
+            <div class="background-image"><img class="img-fluid" src="{% static 'App_CB/assets/img/A.jpg'%}" alt="..." />
+
+        <form action="/buscador_reserva/" method="GET"> {% csrf_token %}
+
+            <p>seleccione fecha de reservas </p>
+
+
+            <input type="date" name="Fecha_importe" id="Fecha_importe"/>
+            <input type="submit" value="buscar"/>
+        
+        
+        </form>   
+    </div>
+</header>
+
+
+{% endblock %}
